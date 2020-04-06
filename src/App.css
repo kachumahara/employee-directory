@@ -1,0 +1,8 @@
+body {
+  margin-top: 180px;
+  padding: 0;
+  margin-left: 0;
+  font-family: sans-serif;
+  background-image: url('/book.jpg');
+  background-size:cover;
+};
