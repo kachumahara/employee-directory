@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import Header from "./Header";
 import API from "../utils/API";
@@ -9,52 +9,58 @@ import moment from "moment";
 class OmdbContainer extends Component {
   state = {
     result: [],
-    search: ""
+    search: "",
   };
 
   componentDidMount() {
-    API.getEmployees().then(( {data} ) => {
-      const employees = data.results.map(employee => ({
+    API.getEmployees().then(({ data }) => {
+      const employees = data.results.map((employee) => ({
         fullname: `${employee.name.first} ${employee.name.last}`,
         image: employee.picture.small,
         email: employee.email,
         phone: employee.phone,
-        id: employee.registered.date
+        id: employee.registered.date,
       }));
 
-      const sortname = employees.sort((a, b) => 
-      a.fullname.localeCompare(b.fullname)
+      const sortname = employees.sort((a, b) =>
+        a.fullname.localeCompare(b.fullname)
       );
-      this.setState({ results: sortname});
-       
-
-
+      this.setState({ results: sortname });
     });
   }
 
   onSortUp = () => {
-    const sortUp = this.state.results.sort((a, b) => a.fullname.localeCompare(b.fullname)
+    const sortUp = this.state.results.sort((a, b) =>
+      a.fullname.localeCompare(b.fullname)
     );
     this.setState({
-      results: sortUp
+      results: sortUp,
     });
-
   };
 
   onSortDown = () => {
-    const sortDown = this.state.results.sort((a, b) => b.fullname.localeCompare(a.fullname)
+    const sortDown = this.state.results.sort((a, b) =>
+      b.fullname.localeCompare(a.fullname)
     );
     this.setState({
-      results: sortDown
+      results: sortDown,
     });
   };
-  
-  handleInputChange =event => {
+
+  handleInputChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
-      [name]: value
-    })
-
+      [name]: value,
+    });
+  };
+  render() {
+    return (
+      <div className="container">
+        <div>
+          <Header></Header>
+        </div>
+      </div>
+    );
   }
 }
