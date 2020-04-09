@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import SearchForm from "./SearchForm";
-import Header from "./Header";
-import API from "../utils/API";
-import Table from "./Table";
+import SearchForm from ".components/SearchForm";
+import Header from ".components/Header";
+import API from "../utils/Api";
+import Table from ".components/Table";
 import "./App.css";
-import moment from "moment";
+// import moment from "moment";
+
 
 class OmdbContainer extends Component {
   state = {
@@ -13,19 +14,20 @@ class OmdbContainer extends Component {
   };
 
   componentDidMount() {
-    API.getEmployees().then(({ data }) => {
-      const employees = data.results.map((employee) => ({
-        fullname: `${employee.name.first} ${employee.name.last}`,
-        image: employee.picture.small,
-        email: employee.email,
-        phone: employee.phone,
-        id: employee.registered.date,
+    API.getUsers().then(({ data }) => {
+      const users = data.results.map((user) => ({
+        fullname: `${user.name.first} ${user.name.last}`,
+        image: user.picture.small,
+        email: user.email,
+        phone: user.phone,
+        id: user.registered.date,
       }));
+      this.setState({result: users})
 
-      const sortname = employees.sort((a, b) =>
+      const sortname = users.sort((a, b) =>
         a.fullname.localeCompare(b.fullname)
       );
-      this.setState({ results: sortname });
+      // this.setState({ results: sortname });
     });
   }
 
@@ -60,7 +62,48 @@ class OmdbContainer extends Component {
         <div>
           <Header></Header>
         </div>
+        <div className="row search bar">
+          <div className="col s4">
+            <SearchForm
+              value={this.state.search}
+              handleInputChange={this.handleInputChange}
+            />
+          </div>
+          <div className="col s8">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>
+                    Name
+                    <button onClick={this.onSortUp}></button>
+                  </th>
+                  <th>Photo</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.result
+                  .filter(
+                    result.fullname.toLowerCase().includes(this.state.search)
+                  )
+                  .map((result) => (
+                    <Table
+                      photo={result.image}
+                      name={result.fullname}
+                      email={result.email}
+                      phone={result.phone}
+                      id={result.id}
+                    />
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+export default OmdbContainer;
