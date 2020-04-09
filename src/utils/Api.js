@@ -5,7 +5,7 @@ const BASEURL = "https://randomuser.me/api/?results=400&inc=name,email,phone,pic
 // Export an object (users) with getUsers method 
 
 export default {
-  getEmployees: function() {
+  getUsers: function() {
     return axios.get(BASEURL);
   }
 };
