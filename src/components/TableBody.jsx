@@ -23,7 +23,7 @@ const TableBody = () => {
         context.devState.filteredUsers.map(
           ({ login, name, picture, phone, email, dob }) => {
             return (
-              <tr key={login.uuid}>
+              <tr key={login}>
                 <td className="align-middle" data-th="image">
                   <img
                     src={picture.medium}
