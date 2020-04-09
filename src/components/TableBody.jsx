@@ -10,7 +10,7 @@ const TableBody = () => {
   function FormatDOB(date) {
     const arrayDOB = date.split("-");
     const year = arrayDOB[0];
-    const month = arrayDOV[1];
+    const month = arrayDOB[1];
     const arrayDay = arrayDOB[2].split("T");
     const day = arrayDay[0];
     const formatDOB = [month, day, year].join("-");
