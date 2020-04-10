@@ -3,7 +3,7 @@ import moment from "moment";
 import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Table from "./components/Table.jsx";
-import API from "./utils/API.js"
+import API from "./utils/API.js";
 import "./styles/Header.css";
 import "./styles/Navbar.css";
 import "./App.css";
@@ -15,14 +15,19 @@ class App extends React.Component {
   };
   componentDidMount() {
     API.getUsers().then(({ data }) => {
-      const users = data.results.map((user) => ({
-        fullname: `${user.name.first} ${user.name.last}`,
-        image: user.picture.medium,
-        email: user.email,
-        phone: user.phone,
-        dob: moment(user.dob.date).format("MM/DD/YYYY"),
-        id: user.registered.date,
-      }));
+      const users = data.results.map((user) => {
+        console.log(user)
+        return {
+        
+          fullname: `${user.name.first} ${user.name.last}`,
+          image: user.picture.medium,
+          email: user.email,
+          phone: user.phone,
+          dob: moment(user.dob.date).format("MM/DD/YYYY"),
+          id: user.registered.date,
+        };
+      });
+
       const sortname = users.sort((a, b) =>
         a.fullname.localeCompare(b.fullname)
       );
@@ -65,7 +70,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div>
-        <Navbar></Navbar>
+          <Navbar></Navbar>
         </div>
         <div>
           <Header></Header>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "https://randomuser.me/api/?results=400&inc=name,email,phone,picture,registered"
+const BASEURL = "https://randomuser.me/api/?results=400"
 
 // Export an object (users) with getUsers method 
 
