@@ -1,5 +1,4 @@
 import React from "react";
-import Name from "./Name.jsx";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
@@ -17,13 +16,10 @@ const Navbar = () => {
         <span className="navbar-toggler-icon" />>
       </button>
       <div className="collapse navbar-collapse row">
-        <div className="search-area col-4">
-          <Name />
-        </div>
+        <div className="search-area col-4"></div>
       </div>
     </nav>
-  )
-
-}
+  );
+};
 
 export default Navbar;

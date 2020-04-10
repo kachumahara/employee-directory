@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.jsx";
 import Table from "./components/Table.jsx";
 import API from "./utils/API.js"
 import "./styles/Header.css";
-import "./styles/Nabar.css";
+import "./styles/Navbar.css";
 import "./App.css";
 
 class App extends React.Component {
@@ -64,6 +64,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <div>
+        <Navbar></Navbar>
+        </div>
         <div>
           <Header></Header>
         </div>
