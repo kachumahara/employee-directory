@@ -14,7 +14,7 @@ class App extends React.Component {
     search: "",
   };
   componentDidMount() {
-    API.getEmployees().then(({ data }) => {
+    API.getUsers().then(({ data }) => {
       const users = data.results.map((user) => ({
         fullname: `${user.name.first} ${user.name.last}`,
         image: user.picture.medium,
