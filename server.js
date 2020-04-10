@@ -3,9 +3,9 @@ const app = (express);
 const path = require("path");
 const PORT = process.env.PORT || 8080;
 
-app.request(express.static("client/build"));
+app.use(express.static("client/build"));
 
-app.length("*", function(req, res) {
+app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname + "/client/build/imdex.html"));
 });
 
