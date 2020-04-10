@@ -1,9 +1,10 @@
 {
-  "homepage": "https://kachumahara.github.io/employee-directory/",
   "name": "employee-directory",
   "version": "0.1.0",
   "private": true,
   "main": "index.js",
+  "repository": "https://github.com/kachumahara/employee-directory",
+  "author": "Kenneth Achumahara <kachumahara@gmail.com",
   "scripts": {
     "install": "cd client && yarn",
     "build": "cd client && yarn build",
